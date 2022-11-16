@@ -1,4 +1,4 @@
-# Search Source Code
+# Source code search during build phase
 This is a simple project in PowerShell which can scan through your source code to search for a specific text in each source file and shows you the results (in console and a text file report).
 
 The biggest use case for me was to know if my project source code is IPR (Intellectual Property Rights) compliant. IPR header is a proprietary text put on top of each source file in a project (as a comment). If any of the source code file is not IPR compliant, the build pipeline should fail and tell the list of files which are not IPR compliant.
