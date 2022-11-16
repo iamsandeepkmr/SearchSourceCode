@@ -6,11 +6,11 @@ The biggest use case for me was to know if my project source code is IPR (Intell
 This PowerShell script can be used as a task in DevOps pipeline to scan through the source code and search for a specific text (IPR header in my case) in each file. You can use this script for other similar requirements.
 
 ## Input to the script
-- **Source Code Path** - Your source code path to scan. Eg. "D:\SourceCode\ProjectABC". Use "$(System.DefaultWorkingDirectory)" if running the script as a task in DevOps pipeline
-- **Text** - Text (part or full) to search for in your source code. Text should be a single line. Eg. "COMPANY XYZ PROPRIETARY. This document and its accompanying elements, contain information which is proprietary and confidential"
-- **Files to Include** - Extension of source code files to consider for scanning. Eg. "*.cs, *.ts, *.html, *.htm"
-- **Folders to Exclude** - Folders to skip from scanning. Eg. "bin, obj, node_modules, dist"
--  **Output File** - Path to a file to report the search results. Eg. "D:\SourceCode\ProjectABC\IPRReport.txt". Make use of $(Build.ArtifactStagingDirectory) if running the script as a task in DevOps pipeline. Eg. "$(Build.ArtifactStagingDirectory)/IPRReport.txt"
+- **Source Code Path:** Your source code path to scan. Eg. "D:\SourceCode\ProjectABC". Use "$(System.DefaultWorkingDirectory)" if running the script as a task in DevOps pipeline
+- **Text:** Text (part or full) to search for in your source code. Text should be a single line. Eg. "COMPANY XYZ PROPRIETARY. This document and its accompanying elements, contain information which is proprietary and confidential"
+- **Files to Include:** Extension of source code files to consider for scanning. Eg. "*.cs, *.ts, *.html, *.htm"
+- **Folders to Exclude:** Folders to skip from scanning. Eg. "bin, obj, node_modules, dist"
+-  **Output File:** Path to a file to report the search results. Eg. "D:\SourceCode\ProjectABC\IPRReport.txt". Make use of "$(Build.ArtifactStagingDirectory)" if running the script as a task in DevOps pipeline. Eg. "$(Build.ArtifactStagingDirectory)/IPRReport.txt"
 
 ## Script
 Refer SearchSourceCode.ps1 from the repository
@@ -31,9 +31,9 @@ This is how the IPR report will look like:
 ![image](https://user-images.githubusercontent.com/42836797/202139809-233ec3de-c534-44fb-8beb-e3a0de8c8ac5.png)
 
 ## Use the Script as a DevOps pipeline task
-- Add a PowerShell task in your pipeline
-- Copy the PowerShell script (Inline). Specify/modify input values
-- Add below code if you want to fail the pipeline in case there are files with missing IPR header:
+- **Add a PowerShell task in your pipeline**
+- **Copy the PowerShell script (Inline). Specify/modify input values**
+- **Add below code if you want to fail the pipeline in case there are files with missing IPR header**
   ```
   if($fileCountWithoutText -gt 0) {
       exit 1
@@ -41,9 +41,9 @@ This is how the IPR report will look like:
   ```
 ![image](https://user-images.githubusercontent.com/42836797/202144543-42bcdde1-9a15-4a5e-bc20-26241366d6eb.png)
 
-- Don't forget to publish the report as a pipeline artifact in a separate task (or as a part of an existing publish artifacts task in your pipeline)
+- **Don't forget to publish the report as a pipeline artifact in a separate task (or as a part of an existing publish artifacts task in your pipeline)**
 
-- Run the pipeline
+- **Run the pipeline**
 
 **Output**
 
